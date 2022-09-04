@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>changingCSSWithJS</title>
+    <style>
+        .mainResult {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 80px;
+        }
+
+        .negativeResult {
+            background-color: red;
+            color: white;
+        }
+
+        .positiveResult {
+            background-color: green;
+            color: white;
+        }
+    </style>
+     <script src="changingCSSWithJS.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1 class="mainResult">1000</h1>
+        <h1 class="mainResult">-1000</h1>
+        <h1 class="mainResult">A name - not a number</h1>
+    </main>
+    <script>
+        function changeClass() {
+            const classAll = document.querySelectorAll('.mainResult');
+            console.log(classAll);
+            for (let i = 0; i < classAll.length; i++) {
+                const num = classAll[i].innerHTML;
+                console.log(num);
+                if (num < 0) {
+                    classAll[i].classList.remove("mainResult");
+                    classAll[i].classList.add("negativeResult");
+                }
+                if (num > 0) {
+                    classAll[i].classList.remove("mainResult");
+                    classAll[i].classList.add("positiveResult");
+                }
+            }
+        }
+        //changeClass();
+        addResultStyling();
+    </script>
+</body>
+
+</html>

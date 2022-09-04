@@ -1,0 +1,9 @@
+﻿@model CreateNewDeveloperViewModel
+
+<h1>Add a new developer</h1>
+
+<form asp-controller="Developers" asp-action="Create" method="post">
+  @Html.DisplayNameFor(m => m.Name): <input asp-for="Name" /> <br />
+  @Html.DisplayNameFor(m => m.Email): <input asp-for="Email" /> <br />
+  <button type="submit">Create new developer</button>
+</form>

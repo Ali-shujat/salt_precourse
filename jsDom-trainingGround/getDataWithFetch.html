@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getDataWithFetch</title>
+    <!-- <script>
+        function getUsers(element) {
+            fetch('https://randomuser.me/api/?gender=female&results=30')
+                .then(response => response.json())
+                .then(data => {
+                    const dataRslt = data.results;
+                    const newDiv = document.createElement("div");
+                    for (let i = 0; i < dataRslt.length; i++) {
+                        const newContent = document.createElement("h2");
+                        newContent.innerHTML = dataRslt[i].name.title + ' ' + dataRslt[i].name.first + ' ' + dataRslt[i].name.last;
+                        const usrImg = document.createElement("img");
+                        usrImg.setAttribute("src", dataRslt[i].picture.thumbnail);
+                        newDiv.appendChild(newContent);
+                        newDiv.appendChild(usrImg);
+                    }
+                    element.appendChild(newDiv);
+                    console.log(data);
+                });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainElement = document.querySelector('main');
+            getUsers(mainElement);
+        });
+    </script> -->
+    <script>
+        function createUserNameHeader(user) {
+            const userHeading = document.createElement('h2');
+            userHeading.textContent = `${user.name.title} ${user.name.first} ${user.name.last}`
+            return userHeading;
+        }
+
+        function createUserImage(user) {
+            const userImage = document.createElement('img');
+            userImage.src = `${user.picture.thumbnail}`;
+            return userImage;
+        }
+        function createUserList(users) {
+            const userList = document.createElement('div');
+            for (let i = 0; i < users.length; i++) {
+                const userDiv = document.createElement('div');
+
+                userDiv.appendChild(createUserNameHeader(users[i]));
+                userDiv.appendChild(createUserImage(users[i]));
+
+                userList.appendChild(userDiv);
+            }
+            return userList;
+        }
+        function getUsers(element) {
+            fetch('https://randomuser.me/api/?gender=female&results=30')
+                .then(response => response.json())
+                .then(data => {
+                    const userList = createUserList(data.results)
+                    element.appendChild(userList);
+                });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainElement = document.querySelector('main');
+            getUsers(mainElement);
+        });
+    </script>
+</head>
+
+<body>
+    <main>
+
+    </main>
+</body>
+
+</html>
